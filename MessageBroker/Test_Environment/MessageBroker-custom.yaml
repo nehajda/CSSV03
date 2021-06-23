@@ -21,7 +21,7 @@ flow:
     file:
       state: "stopped"
     jmsAMQ:
-      state: "stopped"
+      state: "started"
       checkConnectivity: false
     dp:
       state: "stopped"
@@ -40,7 +40,7 @@ flow:
       state: "stopped"
       #checkConnectivity: false
     jmsAMQ:
-      state: "stopped"
+      state: "started"
       checkConnectivity: false
     dp:
       state: "stopped"
@@ -126,10 +126,10 @@ ftpInbound:
 jmsInbound:
   queue:
     name: "MB_INBOUND"
-    brokerURL: "failover:tcp://localhost:61616?jms.prefetchPolicy.all=20"
+    brokerURL: "failover:tcp://IN2NPDVDCSSV03:61616?jms.prefetchPolicy.all=20"
     user: "admin"
-    maxConnections: 5
-    concurrentConsumers: 5
+    maxConnections: 30
+    concurrentConsumers: 30
     primaryNode: false
     initialRedeliveryDelay: 20000
     redeliveryDelay: 20000
@@ -177,10 +177,10 @@ fileOutbound:
   
 jmsOutbound:
   queue:
-    brokerURL: "failover:tcp://localhost:61616?jms.prefetchPolicy.all=20"
+    brokerURL: "failover:tcp://IN2NPDVDCSSV03:61616?jms.prefetchPolicy.all=20"
     user: "admin"
-    maxConnections: 5
-    concurrentConsumers: 5
+    maxConnections: 30
+    concurrentConsumers: 30
     initialRedeliveryDelay: 20000
     redeliveryDelay: 20000
     sessionCacheSize: 100
