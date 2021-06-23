@@ -1,6 +1,6 @@
 MSDatabase:
-  user-secure: "testUser"
-  password-secure: "testPasssword"
+  user-secure: "MSCSSV03"
+  password-secure: "MSCSSV03"
 
 
 server:
