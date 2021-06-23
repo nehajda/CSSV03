@@ -15,7 +15,7 @@ mb:
   gs1ack:
     model: "bydm"
     generateAckError: "true"
-    generateAckSuccess: "false"
+    generateAckSuccess: "true"
     globalReceiverFlag: "true"
     globalReceiverName: "ACK.GLOBAL"
   #The entryTtl for Idempotent Message Validator should be greater then the expirationInterval
