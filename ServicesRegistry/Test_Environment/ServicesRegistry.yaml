@@ -10,7 +10,7 @@ server:
     #config: "HTTP_Listener_config"
     
   https:
-    host: "IN2NPDVDCSSV03.dev.corp.local"
+    host: "0.0.0.0"
     port: "9820"
     tls:
       context: "TLS_Context"
