@@ -2,17 +2,17 @@ mb:
   pipe:
     queue:
 #Please mention the correct queue type and then pass the appropriated properties.
-      type: "VM"
+      type: "JMS"
     vm:
       state: "started"
     jms:
-      state: "stopped"
+      state: "started"
       checkConnectivity: false
       queueName: "MB_PIPE"
 ## Please uncomment the property and update the broker url      
-      #brokerURL: "failover:tcp://localhost:61616?jms.prefetchPolicy.all=20"
-      maxConnections: "5"
-      concurrentConsumers: "5"
+      brokerURL: "failover:tcp://IN2NPDVDCSSV03:61616?jms.prefetchPolicy.all=20"
+      maxConnections: "30"
+      concurrentConsumers: "30"
       primaryNode: false
       initialRedeliveryDelay: "20000"
       redeliveryDelay: "20000"
