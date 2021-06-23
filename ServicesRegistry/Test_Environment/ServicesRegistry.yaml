@@ -2,7 +2,7 @@
 srs:
   rootDirectory: configuration
 
- eframework:
+eframework:
   applicationId: srs
   errorReport:
     enabled: true
