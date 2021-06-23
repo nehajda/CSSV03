@@ -26,14 +26,10 @@ server:
       #context: "TLS_Context_with_Trust"
       keyStore:
         path: "https/keystore.jks"
-        password-secure: "changeme"
-        key:
-          password-secure: "changeme"
       trustStore:
         path: "https/truststore.jks"
-        password-secure: "changeme"
         
-    http:
+  http:
     host: "0.0.0.0"
     port: "9821"
     
