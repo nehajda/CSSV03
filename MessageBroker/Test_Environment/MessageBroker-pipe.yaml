@@ -10,7 +10,7 @@ mb:
       checkConnectivity: false
       queueName: "MB_PIPE"
 ## Please uncomment the property and update the broker url      
-      brokerURL: "failover:tcp://IN2NPDVDCSSV03:61616?jms.prefetchPolicy.all=20"
+      brokerURL: "failover:tcp://IN2NPDVDCSSV03:61616"
       maxConnections: "30"
       concurrentConsumers: "30"
       primaryNode: false
