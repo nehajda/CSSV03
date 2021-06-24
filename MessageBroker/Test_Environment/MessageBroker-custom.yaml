@@ -125,7 +125,7 @@ ftpInbound:
 
 jmsInbound:
   queue:
-    name: "HOST-MB"
+    name: "MB_INBOUND"
     brokerURL: "failover:tcp://in2npdvdcssv03:61616?jms.prefetchPolicy.all=20"
     user: "admin"
     maxConnections: 30
