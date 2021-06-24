@@ -32,6 +32,12 @@ outboundEndpoints:
     parameters:
     - name: "queue"
       value: "MB-WMA"
+- name: ATP
+  flow:
+    name: jmsOutboundFlow
+    parameters:
+    - name: "queue"
+      value: "MB-ATP"
 - name: ACK
   flow:
     name: jmsOutboundFlow
