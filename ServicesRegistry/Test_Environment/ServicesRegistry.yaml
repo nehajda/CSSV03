@@ -35,7 +35,7 @@ server:
     
 cps:
   useCps: "true"  # if false then CPS is not called and files are loaded locally
-  cpsBaseUrl: "https://IN2NPDVDCSSV03.dev.corp.local:9810"
+  cpsBaseUrl: "https://in2npdvdcssv03.dev.corp.local:9810"
   applicationName: “ServicesRegistry”
   profiles: "*"
   version: "*"
