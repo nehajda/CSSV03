@@ -4,7 +4,7 @@ mb:
 #Please mention the correct queue type and then pass the appropriated properties.
       type: "JMS"
     vm:
-      state: "started"
+      state: "stopped"
     jms:
       state: "started"
       checkConnectivity: false
