@@ -32,15 +32,3 @@ server:
   http:
     host: "0.0.0.0"
     port: "9821"
-    
-cps:
-  useCps: "true"  # if false then CPS is not called and files are loaded locally
-  cpsBaseUrl: "https://in2npdvdcssv03.dev.corp.local:9810"
-  applicationName: “ServicesRegistry”
-  profiles: "*"
-  version: "*"
-  localMode: "false"
-  localModePath: ""
-  enableCaching: "false"
-  enableFailover: "false"
-  cachingDir: ""
