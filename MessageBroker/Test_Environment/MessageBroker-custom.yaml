@@ -125,8 +125,8 @@ ftpInbound:
 
 jmsInbound:
   queue:
-    name: "MB_INBOUND"
-    brokerURL: "failover:tcp://in2npdvdcssv03:61616?jms.prefetchPolicy.all=20"
+    name: "HOST-MB"
+    brokerURL: "failover:(tcp://in2npdvdcssv03:61616)?jms.prefetchPolicy.all=20"
     user: "admin"
     maxConnections: 30
     concurrentConsumers: 30
@@ -177,7 +177,7 @@ fileOutbound:
   
 jmsOutbound:
   queue:
-    brokerURL: "failover:tcp://in2npdvdcssv03:61616?jms.prefetchPolicy.all=20"
+    brokerURL: "failover:(tcp://in2npdvdcssv03:61616)?jms.prefetchPolicy.all=20"
     user: "admin"
     maxConnections: 30
     concurrentConsumers: 30
