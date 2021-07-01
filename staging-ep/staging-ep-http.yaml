@@ -1,0 +1,53 @@
+# config-repo/staging-ep/staging-ep.yaml
+
+# Server properties
+server:
+  listener: 
+    #Controls whether api endpoint accepts HTTP or HTTPS
+    #config: "HTTPS_Listener_config"
+    config: "HTTP_Listener_config"
+    
+  https:
+    host: "0.0.0.0"
+    port: "9926"
+    tls:
+      keyStore:
+        path: "keystore.jks"
+        password-secure: "changeme"
+        key:
+          password-secure: "changeme"
+      trustStore:
+        path: "truststore.jks"
+        password-secure: "changeme"
+        
+  http:
+    host: "0.0.0.0"
+    port: "9927"
+
+# Server properties
+replay:
+  listener: 
+    #Controls whether api endpoint accepts HTTP or HTTPS
+    config: "HTTPS_Listener_Config_Replay"
+    #config: "HTTP_Listener_Config_Replay"
+    
+  https:
+    host: "0.0.0.0"
+    port: "9936"
+    tls:
+      keyStore:
+        path: "keystore.jks"
+        password-secure: "changeme"
+        key:
+          password-secure: "changeme"
+      trustStore:
+        path: "truststore.jks"
+        password-secure: "changeme"
+        
+  http:
+    host: "0.0.0.0"
+    port: "9937"
+
+# Defines HTTP path for API exposed by the layer of API-led architecture.
+exp.front.api.base: "jda-staging-ep-api/v1"
+sys.back.api.base: "jda-staging-ep-api/back/v1"

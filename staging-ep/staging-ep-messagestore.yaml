@@ -1,0 +1,31 @@
+# config-repo/staging-ep/staging-ep-messagestore.yaml
+
+messageStore:
+  host: "IN2NPDVDCSSV03.dev.corp.local"
+  port: "9830"
+  service:
+    name: "EPA-GLOBAL"
+    type: "EPA"
+    instance: "EPA"
+    enable: "true"
+    version: "EPA-2020.1.0"
+  basePath: "/messagestore/api/v3"
+  storeClientId: "EPA"
+  storeClientSecret: "EPA"
+  protocol: 
+  #Controls whether api endpoint accepts HTTP or HTTPS
+    #config: "msHTTPSConfiguration"
+    config: "MessageStore_HTTPS"
+  failWhenDuplicate: "false"
+  responseTimeout: "60000"
+  connectionIdleTimeout: "60000"
+  https:
+    tls:
+      keyStore:
+        path: "keystore.jks"
+        password-secure: "changeme"
+        key:
+          password-secure: "changeme"
+      trustStore:
+        path: "truststore.jks"
+        password-secure: "changeme"

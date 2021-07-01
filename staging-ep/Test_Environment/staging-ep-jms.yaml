@@ -1,0 +1,29 @@
+# config-repo/staging-ep/staging-ep.yaml
+
+# Server properties
+server:
+  jms:
+    queue:
+      name: "staging-ep"
+      brokerURL: "tcp://localhost:61616"
+      user: "admin"
+      password-secure: "admin"
+      maxConnections: "5"
+      concurrentConsumers: "3"
+      initialRedeliveryDelay: "20000"
+      redeliveryDelay: "20000"
+      sessionCacheSize: "100"
+      maximumRedeliveries: "5"
+      mb.out: "MB_OUTBOUND_INT"
+      maxRedelivery: "0"
+      reconnectFrequency : "20000"
+      reconnectCount : "5"
+      mb:
+        in:
+          nonBulk: "MB_EP_INBOUND"
+          bulk: "MB_EP_INBOUND_BULK"
+        intermediate:
+          enable: "true"
+          ekb: "MB_EP_INTERMEDIATE_EKB"
+          ext: "MB_EP_INTERMEDIATE_EXT"
+          invTrxn: "MB_EP_INTERMEDIATE_INVTRXN"

@@ -1,0 +1,57 @@
+# config-repo/staging-ep/staging-ep-messagesupport.yaml
+
+vts:
+  protocol: 
+    #Controls whether api endpoint accepts HTTP or HTTPS
+    config: "vtsHTTPConfiguration"
+    #config: "vtsHTTPSConfiguration"
+  
+  https:
+    host: "0.0.0.0"
+    port: "9840"
+    tls:
+      keyStore:
+        path: "keystore.jks"
+        password-secure: "changeme"
+        key:
+          password-secure: "changeme"
+      trustStore:
+        path: "truststore.jks"
+        password-secure: "changeme"
+      
+  http:
+    host: "0.0.0.0"
+    port: "9841"
+  
+srs:
+  clientId: "EPA"
+  clientSecret: "EPA"
+  protocol: 
+    #Controls whether api endpoint accepts HTTP or HTTPS
+    #config: "srsHTTPConfiguration"
+    config: "srsHTTPSConfiguration"
+    
+  https:
+    host: "0.0.0.0"
+    port: "9820"
+    tls:
+      keyStore:
+        path: "keystore.jks"
+        password-secure: "changeme"
+        key:
+          password-secure: "changeme"
+      trustStore:
+        path: "truststore.jks"
+        password-secure: "changeme"
+      
+  http:
+    host: "0.0.0.0"
+    port: "9821"
+    
+version:
+  serviceName : EPA
+  localMode: "true"
+  bindingFileLocation: "srs/service-definition.yaml"
+  definitionFileLocation : "srs/service-binding.yaml"
+  testFullMessageNames: ""
+  srsPath: "srs/api/v1"
