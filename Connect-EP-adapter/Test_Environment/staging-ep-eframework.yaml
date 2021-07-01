@@ -1,0 +1,11 @@
+# config-repo/staging-ep/staging-ep-eframework.yaml
+
+# EFramework Properties
+eframework:
+  applicationId: "staging-ep-app"
+  errorReport:
+    enabled: "true"
+    htmlTemplatePath: "errorReportTemplate.html"
+    errorReportPath: "C:/epa-2021.1.0/errorReports"
+    title: "staging-ep api Error Report"
+    payload.transaction.size: "2000"

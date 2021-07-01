@@ -1,0 +1,224 @@
+# config-repo/staging-ep/staging-ep.yaml
+
+# A sample of a property
+propertySample: "STAGING-EP API"
+
+filePath: "C:/test/test.json"
+batch:
+  size: 1000
+  
+ack:
+  notification:
+    received:
+      enabled: "true"
+    accepted:
+      enabled: "true"
+    error:
+      enabled: "true"
+
+# Message Archival
+messageArchive:
+  location: "C:/epa-2021.1.0"
+  enabled: "true"
+
+bydm:
+  models: '#[["BYDM 2020.4.0"]]'
+  isValidationEnabled : 'false'
+  
+#metadata configs
+BYDMMessage:
+  #BYDMMessage to its respective AG tableName prefix
+  locationHierarchyLevelMember: "AG_2"
+  itemHierarchyLevelMember: "AG_1"
+  timeHierarchyLevelMember: "AG_4"
+  item: "AG_1"
+  location: "AG_2"
+
+#plan delimiter used for all AG_* tables  
+planDelimiter : "_"
+
+#List of all AG_1_* tables and their respective custom colums
+AG_1:
+  #Static colums are common for all the AG_1 tables
+  staticAttributes: "INPUTSEQUENCE,ACTIONCODE,CURRENT_ID,ID,PARENT_MEMBER_ID,PLANNINGID,CULTURE_NAME,SHORT_DESCRIPTION,LONG_DESCRIPTION"
+  #TableNameSufix(levelID) to plainID suffix and customColums(customAttributes) mapping  ex : AG_1_BUYER
+  #Each of these levelID's will have its own plan ID suffix'
+  BUYER:
+    planIdSuffix: "TEST" 
+    customAttributes:
+  CHOICE: 
+    planIdSuffix: "TEST" 
+    customAttributes: "COLOR"
+  CLASS:
+    planIdSuffix: "TEST" 
+    customAttributes:
+  DEPARTMENT:
+    planIdSuffix: "TEST" 
+    customAttributes:
+  DIVISION:
+    planIdSuffix: "TEST" 
+    customAttributes:
+  GMM:
+    planIdSuffix: "TEST" 
+    customAttributes:
+  SKU: 
+    planIdSuffix: "TEST" 
+    customAttributes: "PRICEPOINT,COLOR,SIZECODE"
+  STYLE: 
+    planIdSuffix: "TEST" 
+    customAttributes: "BRAND,KEYITEM,LIFESTYLE,PROMOPRC,REGPRC"
+  SUBCLASS: 
+    planIdSuffix: "TEST" 
+    customAttributes: "PROFILE"
+  TOTAL:
+    planIdSuffix: "TEST" 
+    customAttributes:
+  TTL_BYR:
+    planIdSuffix: "TEST"
+    customAttributes:  
+
+
+#List of all AG_2_* tables and their respective custom colums  
+AG_2:
+  #Static colums are common for all the AG_2 tables
+  staticAttributes: "INPUTSEQUENCE,ACTIONCODE,CURRENT_ID,ID,PARENT_MEMBER_ID,PLANNINGID,CULTURE_NAME,SHORT_DESCRIPTION,LONG_DESCRIPTION"
+  #TableNameSufix(levelID) to plainID suffix and customColums(customAttributes) mapping  ex : AG_2_TTL_BYR
+  #Each of these levelID's will have its own plan ID suffix'
+  TTL_BYR:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  AREA:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  DISTRICT:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  REGION:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  STATE:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  STORE:     
+    planIdSuffix: "TEST"
+    customAttributes: "COMPSTATUS,CLIMATE,DEMOGRAPHIC,FOOTPRINT,FORMAT,VOLUMEBAND"
+  TOTAL:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  TTL_STATE:
+    planIdSuffix: "TEST"
+    customAttributes: 
+    
+#List of all AG_4_* tables and their respective custom colums
+AG_4:
+  #Static colums are common for all the AG_4 tables
+  staticAttributes: "INPUTSEQUENCE,ACTIONCODE,CURRENT_ID,ID,PARENT_MEMBER_ID,PLANNINGID,CULTURE_NAME,SHORT_DESCRIPTION,LONG_DESCRIPTION,CAL_STARTDATE"
+   #TableNameSufix(levelID) to plainID suffix and customColums(customAttributes) mapping  ex : AG_4_TTL_DAY
+  #Each of these levelID's will have its own plan ID suffix'
+  DAY: 
+    planIdSuffix: "TEST"
+    customAttributes: 
+  MONTH: 
+    planIdSuffix: "TEST"
+    customAttributes: 
+  PLNG_SSN:
+    planIdSuffix: "TEST"
+    customAttributes: 
+  QUARTER:     
+    planIdSuffix: "TEST"
+    customAttributes: 
+  SEASON: 
+    planIdSuffix: "TEST"
+    customAttributes: 
+  WEEK: 
+    planIdSuffix: "TEST"
+    customAttributes: "EVENT"
+  YEAR: 
+    planIdSuffix: "TEST"
+    customAttributes:
+
+#Any eheirarchyLevelMember message with ansistry will also got to member relation table        
+memberRelation:
+  tableName: "EXT_EPSD_IMPORT_MEMBER_REL"
+  staticAttributes: "INPUTSEQUENCE,ACTIONCODE,CHILD_MEMBER_ID,CHILD_LEVEL_DEF_ID,PARENT_MEMBER_ID,PARENT_LEVEL_DEF_ID,BUS_ENTITY_TECH_KEY"
+
+#metadata configs end 
+
+
+#factdata configs start
+inventory:
+  #Static colums present in all PKB tables
+  staticAttributes: "TRANS_ID,SEQ,PRODUCT_NAME,ORGANIZATION_NAME,CALENDAR_NAME"
+  #This will be passed as transaction in PKB tables
+  transactionIDFormat: 'yyyyMMddHHmm'
+  
+  #inventoryOnOrder2 will go to following table followed by its measuring codes(custom column)
+  order: 
+    tableName: 'PKB_ACTUAL_ON_ORDER'
+    measureCode: "OO_CST,OO_UNT"
+    
+   #inventoryOnHand2 will go to following table followed by its measuring codes(custom column)
+  onHand: 
+    tableName: 'PKB_ACTUAL_INVBAL'
+    measureCode: "EOP_CST,EOP_UNT"
+  
+
+  #transactionCode in inventoryTransaction2 message maps to tableName and its measureCode
+  transactionCode:
+    '33':
+      tableName: 'PKB_ACTUAL_OTHINV'
+      measureCode: 'CUST_CST'
+    '44':
+      tableName: 'PKB_ACTUAL_OTHINV'
+      measureCode: 'FRT_CST'
+    '55':
+      tableName: 'PKB_ACTUAL_OTHINV'
+      measureCode: 'PROD_CST'
+    '66':
+      tableName: 'PKB_ACTUAL_OTHINV'
+      measureCode: 'VF_RTL'
+    '77':
+      tableName: 'PKB_ACTUAL_OTHINV1'
+      measureCode: 'INVADJ_CST,INVADJ_UNT' 
+    '99':
+      tableName: 'PKB_ACTUAL_OTHINV1'
+      measureCode: 'SHR_CST,SHR_UNT'
+    '111':
+      tableName: 'PKB_ACTUAL_RECEIPTS'
+      measureCode: 'RECCOM_CST,RECCOM_UNT'        
+    '222':
+      tableName: 'PKB_ACTUAL_RECEIPTS'
+      measureCode: 'RECNCOM_CST,RECNCOM_UNT' 
+    '333':
+      tableName: 'PKB_ACTUAL_SALES'
+      measureCode: 'SLSCLR_RTL,SLSCLR_UNT' 
+    '444':
+      tableName: 'PKB_ACTUAL_SALES'
+      measureCode: 'SLSPRO_RTL,SLSPRO_UNT' 
+    '555':
+      tableName: 'PKB_ACTUAL_SALES'
+      measureCode: 'SLSREG_RTL,SLSREG_UNT'
+      
+#Consolidated list of all the measuring code for each of the tables
+  PKB_ACTUAL_OTHINV:
+    measureCode: "CUST_CST,FRT_CST,PROD_CST,VF_RTL"
+  PKB_ACTUAL_OTHINV1:
+    measureCode: "INVADJ_CST,INVADJ_UNT,SHR_CST,SHR_UNT"
+  PKB_ACTUAL_RECEIPTS:
+    measureCode: "RECCOM_CST,RECCOM_UNT,RECNCOM_CST,RECNCOM_UNT"
+  PKB_ACTUAL_SALES:
+    measureCode: "SLSCLR_RTL,SLSCLR_UNT,SLSPRO_RTL,SLSPRO_UNT,SLSREG_RTL,SLSREG_UNT,"
+  
+#factdata configs end     
+
+#Heirarchy definition config 
+
+heirarchyDefinition:
+  tables: "EXT_EPSD_IMPORT_HIERARCHY_DEF,EXT_EPSD_IMPORT_HIER_LEVEL_DEF,EXT_EPSD_IMPORT_LEVEL_DEF,EXT_EPSD_IMPORT_MBR_ATTR_DEF,EXT_EPSD_IMPORT_MEMBER_DEF"
+  staticAttributes: "INPUTSEQUENCE,ACTIONCODE,CURRENT_ID,ID,CULTURE_NAME,SHORT_DESCRIPTION,LONG_DESCRIPTION,BUS_ENTITY_TECH_KEY,PARENT_HIER_DEF_ID"
+#Heirarchy definition config end 
+
+
+
+
+ 
