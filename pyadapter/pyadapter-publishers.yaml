@@ -28,7 +28,7 @@ publishers:
       port: "61613"
       defaultQueueName: "PYCATOUTBOUND"
   yantrik_api:
-    publisher_type: "http"
+    publisher_type: "api"
     type: "api"
     protocol: "http"
     disable_ssl_cert_verification: "true"
