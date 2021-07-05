@@ -5,7 +5,7 @@ triggers:
       username: "admin"
       host: "in2npdvdcssv03"
       port: "61613"
-      queueName: "PYCAT_INBOUND"
+      queueName: "MB-ATP"
       consumerCount: "1"
   planogram_scheduler:
     type: "scheduler"
