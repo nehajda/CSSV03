@@ -5,14 +5,14 @@ store:
   host: IN2NPDVDCSSV03.dev.corp.local
   port: 9830
   basePath: "/messagestore/api/v3"
-  serviceName: CATMAN-GLOBAL
+  serviceName: ATP-GLOBAL
   serviceType: ADAPTER
   serviceInstance: CATMAN-CLUSTER
   serviceHost: IN2NPDVDCSSV03
   serviceVersion: 2021.1.0
-  sender: SAP.GLOBAL
+  sender: WMS.GLOBAL
   endpointType: Receiving
-  endpointName: CATMAN.GLOBAL
+  endpointName: ATP.GLOBAL
   # messageCategory: Request
   # storeStatus: Prepared
   clientId: "xx"
