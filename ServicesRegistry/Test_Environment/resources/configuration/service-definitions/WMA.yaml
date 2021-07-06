@@ -71,6 +71,8 @@ inbound:
       flow: 'flow-in-party'
     - message: 'GS1:partyMessage:GS1_JDA 2017.2.0'
       flow: 'flow-in-party'
+    - message: 'GS1:itemMessage:GS1_JDA 2020.2.0'
+      flow: 'flow-in-item'
     - message: 'GS1:itemMessage:GS1_JDA 2020.1.0'
       flow: 'flow-in-item'
     - message: 'GS1:itemMessage:GS1_JDA 2019.1.1'
