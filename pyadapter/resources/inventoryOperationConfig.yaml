@@ -1,0 +1,110 @@
+---
+Mappings:
+- modelMapping:
+    sourceModel: inventoryOperation
+    targetModel: inventory
+    fieldMapping:
+    - targetField: topic
+      default: "inventory-update-feed-integration-topic"
+    - targetField: operation
+      default: "CREATE"
+    - targetField: isFullyQualifiedTopicName
+      default: false
+    segmentMapping:
+    - targetSegment: key
+      fieldMapping:
+      - targetField: orgId
+        default: "JUNE03"
+      - targetField: uom
+        default: "EACH"
+      - sourceField: inventoryInformation.itemInformation.itemId.primaryId
+        targetField: productId
+      - targetField: locationType
+        default: "DC"
+      - sourceField: inventoryLocation.primaryId
+        targetField: locationId
+    - targetSegment: value
+      fieldMapping:
+      - sourceField: inventoryInformation.itemInformation.itemId.primaryId
+        targetField: productId
+      - targetField: quantity
+        Condition:
+          options:
+          - gt:
+              field: inventoryInformation.inventoryDetails.adjustmentQuantity.value
+              value: 0
+              then: inventoryInformation.inventoryDetails.adjustmentQuantity.value
+      - sourceField: inventoryInformation.inventoryDetails.adjustmentQuantity.measurementUnitCode
+        targetField: uom
+      - sourceField: creationDateTime
+        targetField: updateTime
+      - targetField: locationType
+        default: "DC"
+      - targetField: eventType
+        Condition:
+          options:
+          - eq:
+              field: transactionType
+              value: "INVENTORY_ADJUST"
+              then: default SUPPLY_UPDATE
+              otherwise: default SUPPLY_TYPE_CHANGE
+      - targetField: feedType
+        default: "ABSOLUTE"
+      - targetField: orgId
+        default: "JUNE03"
+      - sourceField: inventoryLocation.primaryId
+        targetField: locationId
+      segmentMapping:
+      - targetSegment: audit
+        fieldMapping:
+        - sourceField: transactionType
+          targetField: transactionType
+        - sourceField: transactionSequence
+          targetField: transactionId
+        - sourceField: reason
+          targetField: transactionReason
+      - targetSegment: to
+        fieldMapping:
+        - sourceField: inventoryInformation.itemInformation.lotNumber
+          targetField: lotNumber
+        - sourceField: inventoryInformation.inventoryDetails.inventoryStatusType
+          targetField: supplyType
+        - sourceField: inventoryInformation.inventoryDetails.expirationDate
+          targetField: expirationDate
+        - sourceField: inventoryInformation.inventoryDetails.productionDate
+          targetField: manufacturedDate
+        - sourceField: inventoryInformation.inventoryDetails.batchNumber
+          targetField: lotAttribute1
+        - sourceField: inventoryInformation.inventoryDetails.productVariantId
+          targetField: lotAttribute1
+        Condition:
+          options:
+          - gt:
+              field: inventoryInformation.inventoryDetails.adjustmentQuantity.value
+              value: 0
+      - targetSegment: from
+        fieldMapping:
+        - sourceField: inventoryInformation.itemInformation.lotNumber
+          targetField: lotNumber
+        - sourceField: inventoryInformation.inventoryDetails.inventoryStatusType
+          targetField: supplyType
+        - sourceField: inventoryInformation.inventoryDetails.expirationDate
+          targetField: expirationDate
+        - sourceField: inventoryInformation.inventoryDetails.productionDate
+          targetField: manufacturedDate
+        - sourceField: inventoryInformation.inventoryDetails.batchNumber
+          targetField: lotAttribute1
+        Condition:
+          options:
+            - lt:
+                field: inventoryInformation.inventoryDetails.adjustmentQuantity.value
+                value: 0
+
+
+
+
+
+
+
+
+

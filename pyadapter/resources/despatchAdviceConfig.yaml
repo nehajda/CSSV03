@@ -1,0 +1,77 @@
+---
+Mappings:
+- modelMapping:
+    sourceModel: despatchAdvice
+    targetModel: inventory
+    segmentListMapping:
+    - targetSegment: payload
+      sourceSegment: despatchAdviceLogisticUnit.lineItem
+      fieldMapping:
+        - targetField: topic
+          default: "inventory-update-feed-integration-topic"
+        - targetField: operation
+          Condition:
+            options:
+            - eq:
+                field: documentActionCode
+                value: "DELETE"
+                then: documentActionCode
+                otherwise: default CREATE
+        - targetField: isFullyQualifiedTopicName
+          default: false
+      segmentMapping:
+      - targetSegment: key
+        fieldMapping:
+        - targetField: orgId
+          default: "JUNE03"
+        - targetField: uom
+          default: "EACH"
+        - sourceField: transactionalTradeItem.primaryId
+          targetField: productId
+        - targetField: locationType
+          default: "DC"
+        - sourceField: shipTo.primaryId
+          targetField: locationId
+      - targetSegment: value
+        fieldMapping:
+        - sourceField: transactionalTradeItem.primaryId
+          targetField: productId
+        - sourceField: despatchedQuantity.value
+          targetField: quantity
+        - sourceField: creationDateTime
+          targetField: updateTime
+        - targetField: locationType
+          default: "DC"
+        - targetField: eventType
+          default: "SUPPLY_UPDATE"
+        - targetField: feedType
+          default: "ABSOLUTE"
+        - targetField: orgId
+          default: "JUNE03"
+        - targetField: uom
+          default: "EACH"
+        - sourceField: shipTo.primaryId
+          targetField: locationId
+        segmentMapping:
+        - targetSegment: audit
+          fieldMapping:
+            - sourceField: purchaseOrder.entityId
+              targetField: transactionId
+            - targetField: transactionReason
+              default: "Item Shipped"
+            - targetField: transactionSystem
+              default: "BY WMS"
+            - targetField: transactionType
+              default: "PO_ASN"
+            - targetField: transactionUser
+              default: "BY-Connect"
+        - targetSegment: to
+          fieldMapping:
+            - sourceField: transactionalTradeItem.transactionalItemData.lotNumber
+              targetField: lotNumber
+            - targetField: supplyType
+              default: "INTRANSIT"
+            - sourceField: despatchInformation.estimatedDeliveryPeriod.beginDate
+              targetField: supplyDate
+            - sourceField: transactionalTradeItem.transactionalItemData.itemExpirationDate
+              targetField: expirationDate

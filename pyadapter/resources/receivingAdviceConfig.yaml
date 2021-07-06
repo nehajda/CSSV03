@@ -1,0 +1,71 @@
+---
+Mappings:
+- modelMapping:
+    sourceModel: receivingAdvice
+    targetModel: inventory
+    segmentListMapping:
+    - targetSegment: payload
+      sourceSegment: receivingAdviceLogisticUnit.lineItem
+      fieldMapping:
+        - targetField: topic
+          default: "inventory-update-feed-integration-topic"
+        - targetField: operation
+          Condition:
+            options:
+            - eq:
+                field: documentActionCode
+                value: "DELETE"
+                then: documentActionCode
+                otherwise: default CREATE
+        - targetField: isFullyQualifiedTopicName
+          default: false
+      segmentMapping:
+      - targetSegment: key
+        fieldMapping:
+        - targetField: orgId
+          default: "JUNE03"
+        - targetField: uom
+          default: "EACH"
+        - sourceField: transactionalTradeItem.primaryId
+          targetField: productId
+        - targetField: locationType
+          default: "DC"
+        - sourceField: shipTo.primaryId
+          targetField: locationId
+      - targetSegment: value
+        fieldMapping:
+        - sourceField: transactionalTradeItem.primaryId
+          targetField: productId
+        - sourceField: quantityReceived.value
+          targetField: quantity
+        - sourceField: creationDateTime
+          targetField: updateTime
+        - targetField: locationType
+          default: "DC"
+        - targetField: eventType
+          default: "SUPPLY_UPDATE"
+        - targetField: feedType
+          default: "DELTA"
+        - targetField: orgId
+          default: "JUNE03"
+        - targetField: uom
+          default: "EACH"
+        - sourceField: shipTo.primaryId
+          targetField: locationId
+        segmentMapping:
+        - targetSegment: audit
+          fieldMapping:
+            - targetField: transactionId
+              default: "RECEIPT-1"
+            - targetField: transactionReason
+              default: "Item Received"
+            - targetField: transactionSystem
+              default: "BY WMS"
+            - targetField: transactionType
+              default: "RECEIPT"
+            - targetField: transactionUser
+              default: "BY-Connect"
+        - targetSegment: to
+          fieldMapping:
+            - targetField: supplyType
+              default: "ONHAND"
