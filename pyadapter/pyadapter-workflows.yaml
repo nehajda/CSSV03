@@ -20,7 +20,16 @@ workflows:
         path: "/kafka-rest-services"
         message:
           message_format: "json"
-          message_type: "catman-api-message"
+          message_type: "api-message"
+    inventoryOperation:
+      trigger: "inbound_jms"
+      publisher: "yantrik_api"
+      publisherOptions:
+        # path: "/Products/api/v2/odata/Products"
+        path: "/kafka-rest-services"
+        message:
+          message_format: "json"
+          message_type: "api-message"
     itemHierarchyLevelMember:
         publisher: "catman_api"
     floorplan:
