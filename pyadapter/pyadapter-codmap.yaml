@@ -1,4 +1,4 @@
 codmap:
-    "FOT": "ft",
-    "EA": "EACH",
-    "LBR": "lb"
+    FOT: ft,
+    EA: EACH,
+    LBR: lb
