@@ -1,0 +1,5 @@
+!service-definition-v1
+name: ATP-2021.1.0
+description: ATP
+requests:
+- 'GS1:despatchAdviceMessage:GS1_JDA 2020.1.0'
