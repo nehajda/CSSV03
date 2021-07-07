@@ -13,5 +13,6 @@ services:
 - WMA.WEST
 - WMA.SOUTH
 - AUDIT
+- ATP.GLOBAL
 
 
