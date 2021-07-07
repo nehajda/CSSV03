@@ -2,8 +2,6 @@
 receiverMappings:
 - receiver: 'HOST.GLOBAL'
   service: 'HOST.GLOBAL'
-- receiver: 'OMS.GLOBAL'
-  service: 'OMS.GLOBAL'
 - receiver: 'ACK.*'
   service: 'ACK.GLOBAL'
 - receiver: 'LOC.*'
@@ -14,7 +12,6 @@ jmbs:
 - JMB1
 services:
 - HOST.GLOBAL
-- OMS.GLOBAL
 - ACK.GLOBAL
 - ATP
 - WMA
