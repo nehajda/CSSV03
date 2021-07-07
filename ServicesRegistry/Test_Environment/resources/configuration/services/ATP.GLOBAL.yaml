@@ -1,4 +1,0 @@
-!service-v1
-name: ATP.GLOBAL
-serviceDefinition: ATP
-enabled: true
