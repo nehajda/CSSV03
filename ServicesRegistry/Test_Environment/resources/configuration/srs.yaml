@@ -1,7 +1,5 @@
 !srs-configuration-v1
 receiverMappings:
-- receiver: 'TMS.GLOBAL'
-  service: 'TMA'
 - receiver: 'HOST.GLOBAL'
   service: 'HOST.GLOBAL'
 - receiver: 'OMS.GLOBAL'
@@ -15,7 +13,6 @@ receiverMappings:
 jmbs:
 - JMB1
 services:
-- TMA
 - HOST.GLOBAL
 - OMS.GLOBAL
 - ACK.GLOBAL
