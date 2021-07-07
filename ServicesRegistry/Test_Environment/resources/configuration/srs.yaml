@@ -11,7 +11,7 @@ receiverMappings:
 - receiver: 'LOC.*'
   service: 'WMA'
 - receiver: 'ATP.GLOBAL'
-  service: 'ATP.GLOBAL'
+  service: 'ATP'
 jmbs:
 - JMB1
 services:
@@ -19,5 +19,5 @@ services:
 - HOST.GLOBAL
 - OMS.GLOBAL
 - ACK.GLOBAL
-- ATP.GLOBAL
+- ATP
 - WMA
