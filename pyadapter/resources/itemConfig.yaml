@@ -14,7 +14,7 @@ Mappings:
     - targetSegment: key
       fieldMapping:
       - targetField: orgId
-        default: "UI_MAY28"
+        default: "JUNE03"
       - sourceField: tradeItemBaseUnitOfMeasure
         targetField: uom
       - targetField: productId
@@ -24,7 +24,7 @@ Mappings:
       - targetField: enabled
         default: true
       - targetField: orgId
-        default: "UI_MAY28"
+        default: "JUNE03"
       - targetField: productCategory
         default: "DEFAULT"
       - sourceField: classifications.itemFamilyGroup
