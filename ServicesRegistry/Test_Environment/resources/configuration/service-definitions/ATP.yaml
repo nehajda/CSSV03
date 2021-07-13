@@ -4,3 +4,4 @@ description: ATP
 requests:
 - 'GS1:despatchAdviceMessage:GS1_JDA 2021.1.0'
 - 'GS1:despatchAdviceMessage:GS1_JDA 2020.1.0'
+- 'GS1:receivingAdviceMessage:GS1_JDA 2021.1.0'
