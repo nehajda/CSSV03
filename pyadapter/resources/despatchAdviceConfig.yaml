@@ -146,7 +146,7 @@ Mappings:
                   default: "PO_ASN"
                 - targetField: transactionUser
                   default: "BY-Connect"
-            - targetSegment: from
+            - targetSegment: to
               fieldMapping:
                 - targetField: supplyType
                   default: "ONHAND"
