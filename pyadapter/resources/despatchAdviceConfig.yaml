@@ -73,6 +73,8 @@ Mappings:
               targetField: lotNumber
             - targetField: supplyType
               default: "INTRANSIT"
+            - targetField: segment
+              default: "PRIME"
             - sourceField: despatchInformation.estimatedDeliveryPeriod.beginDate
               targetField: supplyDate
             - sourceField: transactionalTradeItem.transactionalItemData.itemExpirationDate
@@ -144,10 +146,13 @@ Mappings:
                   default: "PO_ASN"
                 - targetField: transactionUser
                   default: "BY-Connect"
-            - targetSegment: to
+            - targetSegment: from
               fieldMapping:
                 - targetField: supplyType
                   default: "ONHAND"
+                - targetField: segment
+                  default: "PRIME"
+                  
       Condition:
         options:
           - not none:
