@@ -74,4 +74,4 @@ Mappings:
           fieldMapping:
             - targetField: supplyType
               default: "INTRANSIT"
-			- targetField: supplyDate 
+	    - targetField: supplyDate 
