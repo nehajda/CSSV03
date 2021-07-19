@@ -55,8 +55,9 @@ Mappings:
         segmentMapping:
         - targetSegment: audit
           fieldMapping:
-            - targetField: transactionId
-              default: "RECEIPT-1"
+            - sourceField: customerReference.entityId ++ customerReference.lineItemNumber ++ shipTo.primaryId ++ DC CONSTANT
+              targetField: transactionId
+              operation: APPEND_BY ,
             - targetField: transactionReason
               default: "Item Received"
             - targetField: transactionSystem
@@ -69,3 +70,8 @@ Mappings:
           fieldMapping:
             - targetField: supplyType
               default: "ONHAND"
+        - targetSegment: from	
+          fieldMapping:
+            - targetField: supplyType
+              default: "INTRANSIT"
+			- targetField: supplyDate 
