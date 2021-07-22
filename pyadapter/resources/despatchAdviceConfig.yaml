@@ -55,7 +55,7 @@ Mappings:
         segmentMapping:
         - targetSegment: audit
           fieldMapping:
-            - sourceField: customerReference.entityId ++ customerReference.lineItemNumber ++ shipTo.primaryId ++ DC CONSTANT
+            - sourceField: list[customerReference.entityId, customerReference.lineItemNumber, shipTo.primaryId, DC ]
               targetField: transactionId
               operation: APPEND_BY ,
               default: purchaseOrder.entityId
@@ -75,8 +75,10 @@ Mappings:
               default: "INTRANSIT"
             - targetField: segment
               default: "PRIME"
-            - sourceField: despatchInformation.estimatedDeliveryPeriod.beginDate
+            - sourceField: despatchInformation.actualShipDateTime
               targetField: supplyDate
+              operation: SPLIT_BY T
+              return: index 0
             - sourceField: transactionalTradeItem.transactionalItemData.itemExpirationDate
               targetField: expirationDate
       Condition:
