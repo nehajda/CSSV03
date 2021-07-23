@@ -70,8 +70,15 @@ Mappings:
           fieldMapping:
             - targetField: supplyType
               default: "ONHAND"
-        - targetSegment: from	
+            - targetField: segment
+              default: "PRIME"
+        - targetSegment: from
           fieldMapping:
-            - targetField: supplyType
-              default: "INTRANSIT"
-	    - targetField: supplyDate 
+		  - targetField: supplyType
+		    default: "INTRANSIT"
+          - sourceField: receivingDateTime
+            targetField: supplyDate
+            operation: SPLIT_BY T
+            return: index 0
+          - targetField: segment
+            default: "PRIME"
