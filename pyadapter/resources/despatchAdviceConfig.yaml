@@ -55,7 +55,7 @@ Mappings:
         segmentMapping:
         - targetSegment: audit
           fieldMapping:
-            - sourceField: list[customerReference.entityId, customerReference.lineItemNumber, shipTo.primaryId, DC ]
+            - sourceField: customerReference.entityId ++ customerReference.lineItemNumber ++ shipFrom.primaryId ++ DC CONSTANT
               targetField: transactionId
               operation: APPEND_BY ,
               default: purchaseOrder.entityId
