@@ -43,7 +43,7 @@ Mappings:
         - targetField: locationType
           default: "DC"
         - targetField: eventType
-          default: "SUPPLY_UPDATE"
+          default: "SUPPLY_TYPE_CHANGE"
         - targetField: feedType
           default: "DELTA"
         - targetField: orgId
