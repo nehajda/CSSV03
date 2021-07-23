@@ -83,6 +83,8 @@ Mappings:
           targetField: lotAttribute1
         - sourceField: inventoryInformation.inventoryDetails.productVariantId
           targetField: lotAttribute1
+        - targetField: segment
+          default: "PRIME"
         Condition:
           options:
           - gt:
@@ -100,6 +102,8 @@ Mappings:
           targetField: manufacturedDate
         - sourceField: inventoryInformation.inventoryDetails.batchNumber
           targetField: lotAttribute1
+        - targetField: segment
+          default: "PRIME"
         Condition:
           options:
             - lt:
