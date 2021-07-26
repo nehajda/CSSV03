@@ -20,7 +20,7 @@ workflows:
         path: "/kafka-rest-services"
         message:
           message_format: "json"
-          message_type: "api-message"
+          message_type: "bydm"
     inventoryOperation:
       trigger: "inbound_jms"
       publisher: "yantrik_api"
@@ -29,7 +29,7 @@ workflows:
         path: "/kafka-rest-services"
         message:
           message_format: "json"
-          message_type: "api-message"
+          message_type: "bydm"
     despatchAdvice:
       trigger: "inbound_jms"
       publisher: "yantrik_api"
@@ -38,7 +38,7 @@ workflows:
         path: "/kafka-rest-services"
         message:
           message_format: "json"
-          message_type: "api-message"
+          message_type: "bydm"
     receivingAdvice:
       trigger: "inbound_jms"
       publisher: "yantrik_api"
@@ -47,7 +47,7 @@ workflows:
         path: "/kafka-rest-services"
         message:
           message_format: "json"
-          message_type: "api-message"
+          message_type: "bydm"
     itemHierarchyLevelMember:
         publisher: "catman_api"
     floorplan:
